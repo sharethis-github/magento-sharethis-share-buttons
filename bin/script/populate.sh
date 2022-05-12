@@ -8,8 +8,9 @@ set -eo allexport
 # Get this directory as a variable.
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-# Deploy sample data modules.
-"$SCRIPT_DIR/../magento.sh" sampledata:deploy
+# Set memory limit to $PHP_MEMORY_LIMIT from env.
+docker exec -it st_magento bash -c "chmod -R 777 generated var"
+docker exec -it st_magento bash -c "rm -rf generated/* var/*"
 
 # Enable sample data modules.
 "$SCRIPT_DIR/../magento.sh" module:enable \
@@ -34,13 +35,13 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
   Magento_WishlistSampleData
 
 # Flush the cache.
-"$SCRIPT_DIR/../magento.sh" cache:flush
+"$SCRIPT_DIR/../magento.sh" "cache:flush"
 
 # Run the upgrade migration scripts.
-"$SCRIPT_DIR/../magento.sh" setup:upgrade
+"$SCRIPT_DIR/../magento.sh" "setup:upgrade"
 
 # Run dependency injection compilation.
-"$SCRIPT_DIR/../magento.sh" setup:di:compile
+"$SCRIPT_DIR/../magento.sh" "setup:di:compile"
 
 # Run reindexer.
-"$SCRIPT_DIR/../magento.sh" indexer:reindex
+"$SCRIPT_DIR/../magento.sh" "indexer:reindex"

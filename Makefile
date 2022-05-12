@@ -29,6 +29,7 @@ init:		## Init.
 populate:	## Populate Magento with sample data.
 	# Go to https://marketplace.magento.com/customer/accessKeys/ and copy the Public and Private Key
 	# Run sampledata:deploy...
+	@bash ./bin/magento.sh sampledata:deploy
 	@bash ./bin/script/populate.sh
 
 .PHONY: prepare
