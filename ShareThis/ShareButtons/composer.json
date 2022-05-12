@@ -1,0 +1,25 @@
+{
+    "name": "sharethis/sharebuttons",
+    "description": "ShareThis Share Buttons",
+    "require": {
+        "php": "~7.4.0||~8.1.0"
+    },
+    "type": "magento2-module",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "ShareThis",
+            "email": "support@sharethis.com",
+            "homepage": "https://sharethis.com",
+            "role": "Technical Support"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "ShareThis\\ShareButtons\\": ""
+        }
+    }
+}
