@@ -25,16 +25,26 @@ help:	## Show this help.
 init:		## Init.
 	@bash ./bin/script/init.sh
 
+.PHONY: mode-developer
+mode-developer:
+	@bash ./bin/magento.sh deploy:mode:set developer
+
+.PHONY: mode-production
+mode-production:
+	@bash ./bin/magento.sh deploy:mode:set production
+
 .PHONY: populate
 populate:	## Populate Magento with sample data.
-	# Go to https://marketplace.magento.com/customer/accessKeys/ and copy the Public and Private Key
-	# Run sampledata:deploy...
-	@bash ./bin/magento.sh sampledata:deploy
+	@docker exec -it st_magento install-sampledata
 	@bash ./bin/script/populate.sh
 
 .PHONY: prepare
 prepare:	## Prepare.
 	@docker compose up -d --build
+
+.PHONY: restart
+restart:	## Restart Magento.
+	@docker compose restart
 
 .PHONY: start
 start:	## Start Magento.
