@@ -12,33 +12,8 @@ SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 docker exec -it st_magento bash -c "chmod -R 777 generated var"
 docker exec -it st_magento bash -c "rm -rf generated/* var/*"
 
-# Enable sample data modules.
-"$SCRIPT_DIR/../magento.sh" module:enable \
-  Magento_CustomerSampleData \
-  Magento_MsrpSampleData \
-  Magento_CatalogSampleData \
-  Magento_DownloadableSampleData \
-  Magento_OfflineShippingSampleData \
-  Magento_BundleSampleData \
-  Magento_ConfigurableSampleData \
-  Magento_ThemeSampleData \
-  Magento_ProductLinksSampleData \
-  Magento_ReviewSampleData \
-  Magento_CatalogRuleSampleData \
-  Magento_SwatchesSampleData \
-  Magento_GroupedProductSampleData \
-  Magento_TaxSampleData \
-  Magento_CmsSampleData \
-  Magento_SalesRuleSampleData \
-  Magento_SalesSampleData \
-  Magento_WidgetSampleData \
-  Magento_WishlistSampleData
-
 # Flush the cache.
 "$SCRIPT_DIR/../magento.sh" "cache:flush"
-
-# Run the upgrade migration scripts.
-"$SCRIPT_DIR/../magento.sh" "setup:upgrade"
 
 # Run dependency injection compilation.
 "$SCRIPT_DIR/../magento.sh" "setup:di:compile"
