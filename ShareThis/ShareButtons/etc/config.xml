@@ -4,13 +4,20 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd"
 >
     <default>
-        <stsharebuttons>
+        <sharethis_sharebuttons>
             <module>
                 <type>1</type>
             </module>
-            <general>
+            <inline>
+                <enabled>0</enabled>
+                <position>exclude_excerpts,page_bottom,page_top,post_bottom,post_top</position>
+            </inline>
+            <sticky>
+                <enabled>0</enabled>
+            </sticky>
+            <gdpr>
                 <enabled>1</enabled>
-            </general>
-        </stsharebuttons>
+            </gdpr>
+        </sharethis_sharebuttons>
     </default>
 </config>
