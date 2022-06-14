@@ -5,13 +5,13 @@
         <tab id="sharethis" translate="label" sortOrder="999">
             <label>ShareThis</label>
         </tab>
-        <section id="sharethis_sharebuttons" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="sharethis_inline_sharebuttons" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Share Buttons</label>
+            <label>Inline Share Buttons</label>
             <tab>sharethis</tab>
             <resource>ShareThis_ShareButtons::acl_path</resource>
-            <group id="inline" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Inline Share Buttons</label>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
                 <attribute type="expanded">1</attribute>
                 <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
@@ -22,17 +22,33 @@
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlinePosition</source_model>
                 </field>
             </group>
-            <group id="sticky" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Sticky Share Buttons</label>
-                <attribute type="expanded">0</attribute>
+        </section>
+        <section id="sharethis_inline_stickybuttons" translate="label" type="text" sortOrder="1" showInDefault="20" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Sticky Share Buttons</label>
+            <tab>sharethis</tab>
+            <resource>ShareThis_ShareButtons::acl_path</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
                 <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
+                <field id="position" translate="label" type="multiselect" sortOrder="20"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Position</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlinePosition</source_model>
+                </field>
             </group>
-            <group id="gdpr" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>GDPR Compliance Tool</label>
-                <attribute type="expanded">0</attribute>
+        </section>
+        <section id="sharethis_inline_gdpr" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>GDPR Compliance Tool</label>
+            <tab>sharethis</tab>
+            <resource>ShareThis_ShareButtons::acl_path</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <attribute type="expanded">1</attribute>
                 <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
