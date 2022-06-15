@@ -9,7 +9,7 @@ services:
       - db
     env_file:
       - env
-    volumes:
+    volumes: # TODO: Move ./ShareThis/ShareButtons/ items to root (if possible).
       - ./ShareThis:/var/www/html/app/code/ShareThis/
   db:
     container_name: st_mysql
