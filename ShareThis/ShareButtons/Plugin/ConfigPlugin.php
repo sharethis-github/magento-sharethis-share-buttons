@@ -73,12 +73,34 @@ class ConfigPlugin {
 	 * @throws \Exception
 	 */
 	public function afterSave(Config $config) {
+		$section = $config->getSection();
+
+		if ( false === in_array(
+				$section,
+				[
+					'sharethis_inline_sharebuttons',
+					'sharethis_inline_stickybuttons',
+					'sharethis_inline_gdpr',
+				],
+				true
+			)
+		) {
+			return;
+		}
+
 		$propertyId = $this->configHelper->getPropertyId();
 		$secret = $this->configHelper->getSecret();
 
 		if ( true === empty( $propertyId ) ) {
 			return;
 		}
+
+		// TODO: Wire up product map to config section.
+		$productMap = [
+			'sharethis_inline_sharebuttons'  => 'inline-share-buttons',
+			'sharethis_inline_stickybuttons' => 'sticky-share-buttons',
+			'sharethis_inline_gdpr'          => 'gdpr-compliance-tool',
+		];
 
 		// TODO: Only run this call if we're actually updating inline buttons.
 		// TODO: Wire up each field.
@@ -87,7 +109,7 @@ class ConfigPlugin {
 			$secret,
 			'inline-share-buttons',
 			[
-				'alignment'         => 'center',
+				'alignment'         => $this->configHelper->getInlineButtonsAlignment(),
 				'enabled'           => $this->configHelper->getInlineButtonsEnabled(),
 				'font_size'         => 11,
 				'labels'            => 'cta',

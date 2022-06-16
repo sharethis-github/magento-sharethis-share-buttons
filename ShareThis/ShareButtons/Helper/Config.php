@@ -43,6 +43,15 @@ class Config extends AbstractHelper {
 	}
 
 	/**
+	 * Get inline buttons alignment.
+	 *
+	 * @return string
+	 */
+	public function getInlineButtonsAlignment(): string {
+		return $this->getConfigValue('sharethis_inline_sharebuttons/general/alignment', 'center');
+	}
+
+	/**
 	 * Get property ID.
 	 *
 	 * @return string
