@@ -102,6 +102,10 @@ class ConfigPlugin {
 			'sharethis_inline_gdpr'          => 'gdpr-compliance-tool',
 		];
 
+		$inline_social_networks = $this->configHelper->getInlineSocialNetworks();
+
+		$inline_social_networks_count = count($inline_social_networks);
+
 		// TODO: Only run this call if we're actually updating inline buttons.
 		// TODO: Wire up each field.
 		$this->shareThisService->updateProduct(
@@ -116,21 +120,14 @@ class ConfigPlugin {
 				'min_count'         => 1,
 				'padding'           => 8,
 				'radius'            => 0,
-				'networks'          => [
-					'sms',
-					'facebook',
-					'twitter',
-					'pinterest',
-					'email',
-					'sharethis',
-				],
+				'networks'          => $inline_social_networks,
 				'show_total'        => true,
 				'size'              => 32,
 				'spacing'           => 8,
 				'language'          => 'en',
 				'color'             => 'social',
 				'has_spacing'       => true,
-				'num_networks'      => 6,
+				'num_networks'      => $inline_social_networks_count,
 				'size_label'        => 'small',
 				'use_native_counts' => true,
 			]

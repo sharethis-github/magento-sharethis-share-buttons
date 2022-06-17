@@ -52,6 +52,17 @@ class Config extends AbstractHelper {
 	}
 
 	/**
+	 * Get inline social networks.
+	 *
+	 * @return array
+	 */
+	public function getInlineSocialNetworks(): array {
+		$inline_social_networks = $this->getConfigValue('sharethis_inline_sharebuttons/social_networks/networks', '');
+
+		return explode(',', $inline_social_networks);
+	}
+
+	/**
 	 * Get property ID.
 	 *
 	 * @return string

@@ -10,6 +10,9 @@
                 <enabled>0</enabled>
                 <position>exclude_excerpts,page_bottom,page_top,post_bottom,post_top</position>
             </general>
+            <social_networks>
+                <networks>facebook,twitter,pinterest,email,sms,sharethis</networks>
+            </social_networks>
         </sharethis_inline_sharebuttons>
     </default>
 </config>
