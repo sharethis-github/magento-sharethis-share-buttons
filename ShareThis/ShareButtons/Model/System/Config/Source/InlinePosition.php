@@ -9,28 +9,16 @@ namespace ShareThis\ShareButtons\Model\System\Config\Source;
  */
 class InlinePosition extends OptionsArray {
 
-	const POST_TOP = 'post_top';
-
-	const POST_BOTTOM = 'post_bottom';
-
-	const PAGE_TOP = 'page_top';
-
-	const PAGE_BOTTOM = 'page_bottom';
-
-	const EXCLUDE_EXCERPTS = 'exclude_excerpts';
+	const UNDER_CART = 'under_cart';
 
 	/**
 	 * Get option map of inline item positions.
 	 *
-	 * @return array Option array map of icon colors.
+	 * @return array Option array map of item positions.
 	 */
 	public function getOptionMap(): array {
 		return [
-			self::POST_TOP         => __( 'Post Content Top' ),
-			self::POST_BOTTOM      => __( 'Post Content Bottom' ),
-			self::PAGE_TOP         => __( 'Page Content Top' ),
-			self::PAGE_BOTTOM      => __( 'Page Content Bottom' ),
-			self::EXCLUDE_EXCERPTS => __( 'Exclude in Excerpts' ),
+			self::UNDER_CART => __( 'Product Page - Under Cart' ),
 		];
 	}
 }

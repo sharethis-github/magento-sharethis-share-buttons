@@ -16,9 +16,9 @@ class SizeSelect extends OptionsArray {
 	const SMALL = 'small';
 
 	/**
-	 * Get option map of icon colors.
+	 * Get option map of sizes.
 	 *
-	 * @return array Option array map of icon colors.
+	 * @return array Option array map of sizes.
 	 */
 	public function getOptionMap(): array {
 		return [

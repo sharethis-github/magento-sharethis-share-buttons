@@ -11,20 +11,23 @@ class AlignmentSelect extends OptionsArray {
 
 	const CENTER = 'center';
 
+	const JUSTIFIED = 'justified';
+
 	const LEFT = 'left';
 
 	const RIGHT = 'right';
 
 	/**
-	 * Get option map of icon colors.
+	 * Get option map of alignment options.
 	 *
-	 * @return array Option array map of icon colors.
+	 * @return array Option array map of alignment options.
 	 */
 	public function getOptionMap(): array {
 		return [
-			self::LEFT  => __( 'Left' ),
-			self::CENTER => __( 'Center' ),
-			self::RIGHT  => __( 'Right' ),
+			self::LEFT      => __( 'Left' ),
+			self::CENTER    => __( 'Center' ),
+			self::RIGHT     => __( 'Right' ),
+			self::JUSTIFIED => __( 'Justified' ),
 		];
 	}
 }

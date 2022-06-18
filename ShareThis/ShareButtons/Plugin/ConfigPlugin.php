@@ -102,9 +102,9 @@ class ConfigPlugin {
 			'sharethis_inline_gdpr'          => 'gdpr-compliance-tool',
 		];
 
-		$inline_social_networks = $this->configHelper->getInlineSocialNetworks();
+		$inlineSocialNetworks = $this->configHelper->getInlineSocialNetworks();
 
-		$inline_social_networks_count = count($inline_social_networks);
+		$inlineSocialNetworksCount = count($inlineSocialNetworks);
 
 		// TODO: Only run this call if we're actually updating inline buttons.
 		// TODO: Wire up each field.
@@ -116,19 +116,19 @@ class ConfigPlugin {
 				'alignment'         => $this->configHelper->getInlineButtonsAlignment(),
 				'enabled'           => $this->configHelper->getInlineButtonsEnabled(),
 				'font_size'         => 11,
-				'labels'            => 'cta',
-				'min_count'         => 1,
+				'labels'            => $this->configHelper->getInlineButtonsLabelType(),
+				'min_count'         => $this->configHelper->getInlineButtonsMinimumCount(),
 				'padding'           => 8,
-				'radius'            => 0,
-				'networks'          => $inline_social_networks,
-				'show_total'        => true,
+				'radius'            => $this->configHelper->getInlineButtonsRadius(),
+				'networks'          => $inlineSocialNetworks,
+				'show_total'        => $this->configHelper->getInlineButtonsShowCounts(),
 				'size'              => 32,
 				'spacing'           => 8,
-				'language'          => 'en',
+				'language'          => $this->configHelper->getInlineButtonsLanguage(),
 				'color'             => 'social',
-				'has_spacing'       => true,
-				'num_networks'      => $inline_social_networks_count,
-				'size_label'        => 'small',
+				'has_spacing'       => $this->configHelper->getInlineButtonsHasSpacing(),
+				'num_networks'      => $inlineSocialNetworksCount,
+				'size_label'        => $this->configHelper->getInlineButtonsLabelSize(),
 				'use_native_counts' => true,
 			]
 		);

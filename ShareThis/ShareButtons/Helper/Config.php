@@ -52,14 +52,92 @@ class Config extends AbstractHelper {
 	}
 
 	/**
+	 * Get inline buttons language.
+	 *
+	 * @return string
+	 */
+	public function getInlineButtonsLanguage(): string {
+		return $this->getConfigValue('sharethis_inline_sharebuttons/general/language', 'en');
+	}
+
+	/**
+	 * Get inline buttons label size.
+	 *
+	 * @return string
+	 */
+	public function getInlineButtonsLabelSize(): string {
+		return $this->getConfigValue('sharethis_inline_sharebuttons/general/label_size', 'small');
+	}
+
+	/**
+	 * Get inline buttons label type.
+	 *
+	 * @return string
+	 */
+	public function getInlineButtonsLabelType(): string {
+		return $this->getConfigValue('sharethis_inline_sharebuttons/general/label_type', 'cta');
+	}
+
+	/**
+	 * Get inline buttons - show counts.
+	 *
+	 * @return bool
+	 */
+	public function getInlineButtonsShowCounts(): bool {
+		return '1' === $this->getConfigValue('sharethis_inline_sharebuttons/general/show_counts', '0');
+	}
+
+	/**
+	 * Get inline buttons - min count to show counts.
+	 *
+	 * @return integer
+	 */
+	public function getInlineButtonsMinimumCount(): int {
+		return intval( $this->getConfigValue( 'sharethis_inline_sharebuttons/general/min_count', 1 ) );
+	}
+
+	/**
+	 * Get inline buttons border radius.
+	 *
+	 * @return integer
+	 */
+	public function getInlineButtonsRadius(): int {
+		return intval( $this->getConfigValue( 'sharethis_inline_sharebuttons/general/radius', 0 ) );
+	}
+
+	/**
+	 * Get inline buttons - has spacing.
+	 *
+	 * @return bool
+	 */
+	public function getInlineButtonsHasSpacing(): bool {
+		return '1' === $this->getConfigValue( 'sharethis_inline_sharebuttons/general/has_spacing', '1' );
+	}
+
+	/**
 	 * Get inline social networks.
 	 *
 	 * @return array
 	 */
 	public function getInlineSocialNetworks(): array {
-		$inline_social_networks = $this->getConfigValue('sharethis_inline_sharebuttons/social_networks/networks', '');
+		$networks = [];
 
-		return explode(',', $inline_social_networks);
+		foreach ( $this->getSupportedSocialNetworks() as $supportedSocialNetwork => $supportedSocialNetworkLabel ) {
+			$networks[ $supportedSocialNetwork ] = $this->getConfigValue(
+				sprintf( 'sharethis_inline_sharebuttons/social_networks/%s', $supportedSocialNetwork ),
+				''
+			);
+		}
+
+		$networks = array_filter( $networks, function ( $network ) {
+			return false === empty( $network );
+		} );
+
+		$network_slugs = array_keys( $networks );
+
+		sort( $network_slugs );
+
+		return $network_slugs;
 	}
 
 	/**
@@ -98,7 +176,7 @@ class Config extends AbstractHelper {
 	) {
 		$value = $this->scopeConfig->getValue( $field, $scopeType, $scopeValue );
 
-		if ( true === empty( $value ) ) {
+		if ( 0 !== $value && '0' !== $value && true === empty( $value ) ) {
 			return $default;
 		}
 
@@ -116,5 +194,61 @@ class Config extends AbstractHelper {
 		$value
 	) {
 		$this->configWriter->save($path, $value);
+	}
+
+	/**
+	 * Get supported social networks.
+	 *
+	 * @return array
+	 */
+	public function getSupportedSocialNetworks(): array {
+		return [
+			'blm'             => __( "BLM" ),
+			'blogger'         => __( "Blogger" ),
+			'buffer'          => __( "Buffer" ),
+			'delicious'       => __( "Delicious" ),
+			'diaspora'        => __( "Diaspora" ),
+			'digg'            => __( "Digg" ),
+			'douban'          => __( "Douban" ),
+			'email'           => __( "Email" ),
+			'evernote'        => __( "Evernote" ),
+			'facebook'        => __( 'Facebook' ),
+			'flipboard'       => __( "Flipboard" ),
+			'getpocket'       => __( "Pocket" ),
+			'gmail'           => __( "Gmail" ),
+			'googlebookmarks' => __( "Google Bookmarks" ),
+			'hackernews'      => __( "Hacker News" ),
+			'instapaper'      => __( "Instapaper" ),
+			'line'            => __( "Line" ),
+			'linkedin'        => __( "LinkedIn" ),
+			'livejournal'     => __( "LiveJournal" ),
+			'mailru'          => __( "Mail.ru" ),
+			'meneame'         => __( "Menéame" ),
+			'messenger'       => __( "Messenger" ),
+			'odnoklassniki'   => __( "Odnoklassniki" ),
+			'pinterest'       => __( "Pinterest" ),
+			'print'           => __( "Print" ),
+			'qzone'           => __( "Qzone" ),
+			'reddit'          => __( "Reddit" ),
+			'refind'          => __( "Refind" ),
+			'renren'          => __( "Renren" ),
+			'sharethis'       => __( "ShareThis" ),
+			'skype'           => __( "Skype" ),
+			'sms'             => __( "SMS" ),
+			'surfingbird'     => __( "SurfingBird" ),
+			'snapchat'        => __( "Snapchat" ),
+			'stumbleupon'     => __( "StumbleUpon" ),
+			'telegram'        => __( "Telegram" ),
+			'threema'         => __( "Threema" ),
+			'twitter'         => __( 'Twitter' ),
+			'tumblr'          => __( "Tumblr" ),
+			'vk'              => __( "VK" ),
+			'wechat'          => __( "WeChat" ),
+			'weibo'           => __( "Weibo" ),
+			'whatsapp'        => __( "WhatsApp" ),
+			'wordpress'       => __( "WordPress" ),
+			'xing'            => __( "Xing" ),
+			'yahoomail'       => __( "Yahoo! Mail" ),
+		];
 	}
 }

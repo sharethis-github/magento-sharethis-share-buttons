@@ -8,10 +8,61 @@
             <general>
                 <alignment>center</alignment>
                 <enabled>0</enabled>
-                <position>exclude_excerpts,page_bottom,page_top,post_bottom,post_top</position>
+                <has_spacing>1</has_spacing>
+                <label_size>small</label_size>
+                <language>en</language>
+                <min_count>1</min_count>
+                <position>under_cart</position>
+                <radius>0</radius>
+                <show_counts>1</show_counts>
             </general>
             <social_networks>
-                <networks>facebook,twitter,pinterest,email,sms,sharethis</networks>
+                <blm>0</blm>
+                <blogger>0</blogger>
+                <buffer>0</buffer>
+                <delicious>0</delicious>
+                <diaspora>0</diaspora>
+                <digg>0</digg>
+                <douban>0</douban>
+                <email>1</email>
+                <evernote>0</evernote>
+                <facebook>1</facebook>
+                <flipboard>0</flipboard>
+                <getpocket>0</getpocket>
+                <gmail>0</gmail>
+                <googlebookmarks>0</googlebookmarks>
+                <hackernews>0</hackernews>
+                <instapaper>0</instapaper>
+                <line>0</line>
+                <linkedin>0</linkedin>
+                <livejournal>0</livejournal>
+                <mailru>0</mailru>
+                <meneame>0</meneame>
+                <messenger>0</messenger>
+                <odnoklassniki>0</odnoklassniki>
+                <pinterest>1</pinterest>
+                <print>0</print>
+                <qzone>0</qzone>
+                <reddit>0</reddit>
+                <refind>0</refind>
+                <renren>0</renren>
+                <sharethis>1</sharethis>
+                <skype>0</skype>
+                <sms>1</sms>
+                <surfingbird>0</surfingbird>
+                <snapchat>0</snapchat>
+                <stumbleupon>0</stumbleupon>
+                <telegram>0</telegram>
+                <threema>0</threema>
+                <twitter>1</twitter>
+                <tumblr>0</tumblr>
+                <vk>0</vk>
+                <wechat>0</wechat>
+                <weibo>0</weibo>
+                <whatsapp>0</whatsapp>
+                <wordpress>0</wordpress>
+                <xing>0</xing>
+                <yahoomail>0</yahoomail>
             </social_networks>
         </sharethis_inline_sharebuttons>
     </default>
