@@ -2,7 +2,7 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="sharethis" translate="label" sortOrder="60">
+        <tab id="sharethis" translate="label" sortOrder="200">
             <label>ShareThis</label>
         </tab>
         <section id="sharethis_inline_sharebuttons" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -17,23 +17,23 @@
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="position" translate="label" type="multiselect" sortOrder="20"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="position" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Position</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlinePosition</source_model>
                 </field>
-                <field id="alignment" translate="label" type="select" sortOrder="30"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="alignment" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Alignment</label>
-                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\AlignmentSelect</source_model>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlineAlignmentSelect</source_model>
                 </field>
-                <field id="language" translate="label" type="select" sortOrder="40"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="language" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Language</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\LanguageSelect</source_model>
                 </field>
-                <field id="label_size" translate="label" type="select" sortOrder="50"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="label_size" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Label Size</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\SizeSelect</source_model>
                 </field>
-                <field id="label_type" translate="label" type="select" sortOrder="60"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="label_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Label Type</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\LabelSelect</source_model>
                 </field>
@@ -44,8 +44,10 @@
                 </field>
                 <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Minimum Count</label>
-                    <validate>integer no-whitespace</validate>
-                    <comment>This is the minimum number of shares a page needs to have before we'll show your share counts.</comment>
+                    <validate>integer validate-greater-than-zero</validate>
+                    <comment>This is the minimum number of shares a page needs to have before we'll show your share
+                        counts.
+                    </comment>
                     <depends>
                         <field id="show_counts">1</field>
                     </depends>
@@ -250,7 +252,7 @@
                 </field>
             </group>
         </section>
-        <section id="sharethis_inline_stickybuttons" translate="label" type="text" sortOrder="1" showInDefault="20" showInWebsite="1" showInStore="1">
+        <section id="sharethis_sticky_sharebuttons" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>Sticky Share Buttons</label>
             <tab>sharethis</tab>
@@ -258,26 +260,267 @@
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
-                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="position" translate="label" type="multiselect" sortOrder="20"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Position</label>
-                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlinePosition</source_model>
+                <field id="alignment" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Alignment</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyAlignmentSelect</source_model>
+                </field>
+                <field id="language" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Language</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\LanguageSelect</source_model>
+                </field>
+                <field id="show_on" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Show On</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyShowOn</source_model>
+                </field>
+                <field id="show_on_page" translate="label" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select Pages</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickySelectPages</source_model>
+                    <depends>
+                        <field id="show_on">select_pages</field>
+                    </depends>
+                </field>
+                <field id="show_on_cms_page" translate="label" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select CMS Page</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyCmsPages</source_model>
+                    <depends>
+                        <field id="show_on">select_pages</field>
+                    </depends>
+                </field>
+                <field id="vertical_alignment" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Vertical Alignment</label>
+                    <validate>validate-number</validate>
+                </field>
+                <field id="mobile_breakpoint" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mobile Breakpoint</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                </field>
+                <field id="label_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Label Type</label>
+                    <source_model>ShareThis\ShareButtons\Model\System\Config\Source\LabelSelect</source_model>
+                </field>
+                <field id="show_counts" translate="label comment" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <comment>Whether to show share counts (once minimum count is reached).</comment>
+                    <label>Show Total Count</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Count</label>
+                    <validate>integer validate-greater-than-zero</validate>
+                    <comment>This is the minimum number of shares a page needs to have before we'll show your share
+                        counts.
+                    </comment>
+                    <depends>
+                        <field id="show_counts">1</field>
+                    </depends>
+                </field>
+                <field id="radius" translate="label comment" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Corners</label>
+                    <comment>Enter a number between 0 and 16, 0 being square and 16 being very round.</comment>
+                    <validate>validate-number validate-number-range number-range-0-16</validate>
                 </field>
             </group>
-        </section>
-        <section id="sharethis_inline_gdpr" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>separator-top</class>
-            <label>GDPR Compliance Tool</label>
-            <tab>sharethis</tab>
-            <resource>ShareThis_ShareButtons::acl_path</resource>
-            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>General</label>
-                <attribute type="expanded">1</attribute>
-                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Enabled</label>
+            <group id="extra" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Extra</label>
+                <attribute type="expanded">0</attribute>
+                <field id="show_on_mobile" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show on mobile</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="hide_on_desktop" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide on desktop</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="social_networks" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Social Networks</label>
+                <attribute type="expanded">0</attribute>
+                <field id="blm" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>BLM</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="blogger" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Blogger</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="buffer" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buffer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="delicious" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delicious</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="diaspora" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Diaspora</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="digg" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Digg</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="douban" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Douban</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="email" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="evernote" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Evernote</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="facebook" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="flipboard" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Flipboard</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="getpocket" translate="label" type="select" sortOrder="245" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pocket</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="gmail" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Gmail</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="googlebookmarks" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Bookmarks</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="hackernews" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hacker News</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="instapaper" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instapaper</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="line" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Line</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="linkedin" translate="label" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LinkedIn</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="livejournal" translate="label" type="select" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LiveJournal</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="mailru" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mail.ru</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="meneame" translate="label" type="select" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Menéame</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="messenger" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Messenger</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="odnoklassniki" translate="label" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Odnoklassniki</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="pinterest" translate="label" type="select" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pinterest</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="print" translate="label" type="select" sortOrder="250" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Print</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="qzone" translate="label" type="select" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Qzone</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="reddit" translate="label" type="select" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reddit</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="refind" translate="label" type="select" sortOrder="280" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Refind</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="renren" translate="label" type="select" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Renren</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="sharethis" translate="label" type="select" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>ShareThis</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="skype" translate="label" type="select" sortOrder="310" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Skype</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="sms" translate="label" type="select" sortOrder="320" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SMS</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                    <comment>SMS works only on mobile devices.</comment>
+                </field>
+                <field id="surfingbird" translate="label" type="select" sortOrder="330" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SurfingBird</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="snapchat" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Snapchat</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="stumbleupon" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>StumbleUpon</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="telegram" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Telegram</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="threema" translate="label" type="select" sortOrder="370" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Threema</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="twitter" translate="label" type="select" sortOrder="380" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twitter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="tumblr" translate="label" type="select" sortOrder="390" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tumblr</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="vk" translate="label" type="select" sortOrder="400" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>VK</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="wechat" translate="label" type="select" sortOrder="410" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WeChat</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="weibo" translate="label" type="select" sortOrder="420" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Weibo</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="whatsapp" translate="label" type="select" sortOrder="430" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WhatsApp</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="wordpress" translate="label" type="select" sortOrder="440" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WordPress</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="xing" translate="label" type="select" sortOrder="450" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Xing</label>
+                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
+                </field>
+                <field id="yahoomail" translate="label" type="select" sortOrder="460" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Yahoo! Mail</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
             </group>

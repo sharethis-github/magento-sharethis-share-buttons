@@ -79,8 +79,7 @@ class ConfigPlugin {
 				$section,
 				[
 					'sharethis_inline_sharebuttons',
-					'sharethis_inline_stickybuttons',
-					'sharethis_inline_gdpr',
+					'sharethis_sticky_sharebuttons',
 				],
 				true
 			)
@@ -95,19 +94,29 @@ class ConfigPlugin {
 			return;
 		}
 
-		// TODO: Wire up product map to config section.
-		$productMap = [
-			'sharethis_inline_sharebuttons'  => 'inline-share-buttons',
-			'sharethis_inline_stickybuttons' => 'sticky-share-buttons',
-			'sharethis_inline_gdpr'          => 'gdpr-compliance-tool',
-		];
+		switch($section) {
+			case 'sharethis_inline_sharebuttons':
+				$this->saveInlineButtonConfig($propertyId, $secret);
+				break;
+			case 'sharethis_sticky_sharebuttons':
+				$this->saveStickyButtonConfig($propertyId, $secret);
+				break;
+		}
+	}
 
-		$inlineSocialNetworks = $this->configHelper->getInlineSocialNetworks();
+	/**
+	 * Save inline button config to ShareThis.
+	 *
+	 * @param string $propertyId Property ID string.
+	 * @param string $secret     Secret string.
+	 *
+	 * @throws \Exception
+	 */
+	protected function saveInlineButtonConfig($propertyId, $secret) {
+		$inlineSocialNetworks = $this->configHelper->getSocialNetworks('inline');
 
 		$inlineSocialNetworksCount = count($inlineSocialNetworks);
 
-		// TODO: Only run this call if we're actually updating inline buttons.
-		// TODO: Wire up each field.
 		$this->shareThisService->updateProduct(
 			$propertyId,
 			$secret,
@@ -130,6 +139,36 @@ class ConfigPlugin {
 				'num_networks'      => $inlineSocialNetworksCount,
 				'size_label'        => $this->configHelper->getInlineButtonsLabelSize(),
 				'use_native_counts' => true,
+			]
+		);
+	}
+
+	/**
+	 * Save sticky button config to ShareThis.
+	 *
+	 * @param string $propertyId Property ID string.
+	 * @param string $secret     Secret string.
+	 *
+	 * @throws \Exception
+	 */
+	protected function saveStickyButtonConfig( $propertyId, $secret ) {
+		$this->shareThisService->updateProduct(
+			$propertyId,
+			$secret,
+			'sticky-share-buttons',
+			[
+				'alignment'         => $this->configHelper->getStickyButtonsAlignment(),
+				'enabled'           => $this->configHelper->getStickyButtonsEnabled(),
+				'labels'            => $this->configHelper->getStickyButtonsLabelType(),
+				'min_count'         => $this->configHelper->getStickyButtonsMinimumCount(),
+				'radius'            => $this->configHelper->getStickyButtonsRadius(),
+				'networks'          => $this->configHelper->getSocialNetworks( 'sticky' ),
+				'mobile_breakpoint' => $this->configHelper->getStickyButtonsMobileBreakpoint(),
+				'top'               => $this->configHelper->getStickyButtonsVerticalAlignment(),
+				'show_mobile'       => $this->configHelper->getStickyButtonsShowMobile(),
+				'show_total'        => $this->configHelper->getStickyButtonsShowCounts(),
+				'hide_desktop'      => $this->configHelper->getStickyButtonsHideDesktop(),
+				'language'          => $this->configHelper->getStickyButtonsLanguage(),
 			]
 		);
 	}

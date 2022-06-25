@@ -117,14 +117,16 @@ class Config extends AbstractHelper {
 	/**
 	 * Get inline social networks.
 	 *
+	 * @param string $type Button type (inline or sticky).
+	 *
 	 * @return array
 	 */
-	public function getInlineSocialNetworks(): array {
+	public function getSocialNetworks( string $type = 'inline' ): array {
 		$networks = [];
 
 		foreach ( $this->getSupportedSocialNetworks() as $supportedSocialNetwork => $supportedSocialNetworkLabel ) {
 			$networks[ $supportedSocialNetwork ] = $this->getConfigValue(
-				sprintf( 'sharethis_inline_sharebuttons/social_networks/%s', $supportedSocialNetwork ),
+				sprintf( 'sharethis_%s_sharebuttons/social_networks/%s', $type, $supportedSocialNetwork ),
 				''
 			);
 		}
@@ -139,6 +141,110 @@ class Config extends AbstractHelper {
 
 		return $network_slugs;
 	}
+
+	/** Sticky Share */
+
+	/**
+	 * Fetch whether sticky buttons are enabled.
+	 *
+	 * @return bool
+	 */
+	public function getStickyButtonsEnabled(): bool {
+		return '1' === $this->getConfigValue('sharethis_sticky_sharebuttons/general/enabled', '0');
+	}
+
+	/**
+	 * Get sticky buttons label type.
+	 *
+	 * @return string
+	 */
+	public function getStickyButtonsLabelType(): string {
+		return $this->getConfigValue('sharethis_sticky_sharebuttons/general/label_type', 'cta');
+	}
+
+	/**
+	 * Get sticky buttons - min count to show counts.
+	 *
+	 * @return integer
+	 */
+	public function getStickyButtonsMinimumCount(): int {
+		return intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/general/min_count', 1 ) );
+	}
+
+	/**
+	 * Get sticky buttons alignment.
+	 *
+	 * @return string
+	 */
+	public function getStickyButtonsAlignment(): string {
+		return $this->getConfigValue('sharethis_sticky_sharebuttons/general/alignment', 'left');
+	}
+
+	/**
+	 * Get sticky buttons language.
+	 *
+	 * @return string
+	 */
+	public function getStickyButtonsLanguage(): string {
+		return $this->getConfigValue('sharethis_sticky_sharebuttons/general/language', 'en');
+	}
+
+
+	/**
+	 * Get sticky buttons border radius.
+	 *
+	 * @return integer
+	 */
+	public function getStickyButtonsRadius(): int {
+		return intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/general/radius', 0 ) );
+	}
+
+	/**
+	 * Get sticky buttons mobile breakpoint.
+	 *
+	 * @return int
+	 */
+	public function getStickyButtonsMobileBreakpoint(): int {
+		return intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/general/mobile_breakpoint', 1024 ) );
+	}
+
+	/**
+	 * Get sticky buttons vertical alignment.
+	 *
+	 * @return int
+	 */
+	public function getStickyButtonsVerticalAlignment(): int {
+		return intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/general/vertical_alignment', 160 ) );
+	}
+
+	/**
+	 * Get whether sticky buttons should show on mobile.
+	 *
+	 * @return bool
+	 */
+	public function getStickyButtonsShowMobile(): bool {
+		return 1 === intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/extra/show_on_mobile', '1' ) );
+	}
+
+	/**
+	 * Get whether sticky buttons should hide on desktop.
+	 *
+	 * @return bool
+	 */
+	public function getStickyButtonsHideDesktop(): bool {
+		return 1 === intval( $this->getConfigValue( 'sharethis_sticky_sharebuttons/extra/hide_on_desktop', '0' ) );
+	}
+
+	/**
+	 * Get sticky buttons - show counts.
+	 *
+	 * @return bool
+	 */
+	public function getStickyButtonsShowCounts(): bool {
+		return 1 === intval( $this->getConfigValue('sharethis_sticky_sharebuttons/general/show_counts', '0') );
+	}
+
+	/** Etc. */
 
 	/**
 	 * Get property ID.

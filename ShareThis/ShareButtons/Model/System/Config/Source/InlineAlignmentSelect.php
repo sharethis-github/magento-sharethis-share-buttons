@@ -3,11 +3,11 @@
 namespace ShareThis\ShareButtons\Model\System\Config\Source;
 
 /**
- * Class AlignmentSelect.
+ * Class InlineAlignmentSelect.
  *
  * @package ShareThis\ShareButtons
  */
-class AlignmentSelect extends OptionsArray {
+class InlineAlignmentSelect extends OptionsArray {
 
 	const CENTER = 'center';
 
