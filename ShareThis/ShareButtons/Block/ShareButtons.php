@@ -47,7 +47,7 @@ class ShareButtons extends Template {
 
 		switch ( $type ) {
 			case 'inline':
-				$pagesAllowed[] = 'under_cart';
+				$pagesAllowed[] = 'under_cart'; // TODO: Grab this dynamically.
 
 				return true === in_array( $page, $pagesAllowed, true );
 			case 'sticky':

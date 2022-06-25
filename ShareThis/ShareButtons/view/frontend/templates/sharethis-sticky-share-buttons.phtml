@@ -1,0 +1,9 @@
+<?php
+/** @var ShareButtons $block */
+
+use ShareThis\ShareButtons\Block\ShareButtons;
+
+?>
+<?php if ( false === $block->isEnabled() ) : ?>
+	<style>.st-sticky-share-buttons{ display: none!important; }</style>
+<?php endif; ?>
