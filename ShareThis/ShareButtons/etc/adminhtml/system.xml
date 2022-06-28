@@ -6,7 +6,7 @@
             <label>ShareThis</label>
         </tab>
         <section id="sharethis_inline_sharebuttons" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>separator-top</class>
+            <class>sharethis-inline separator-top</class>
             <label>Inline Share Buttons</label>
             <tab>sharethis</tab>
             <resource>ShareThis_ShareButtons::acl_path</resource>
@@ -253,7 +253,7 @@
             </group>
         </section>
         <section id="sharethis_sticky_sharebuttons" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-            <class>separator-top</class>
+            <class>sharethis-sticky separator-top</class>
             <label>Sticky Share Buttons</label>
             <tab>sharethis</tab>
             <resource>ShareThis_ShareButtons::acl_path</resource>
