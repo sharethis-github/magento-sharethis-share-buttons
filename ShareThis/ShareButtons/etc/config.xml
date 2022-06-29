@@ -13,7 +13,9 @@
                 <label_type>cta</label_type>
                 <language>en</language>
                 <min_count>1</min_count>
-                <position>under_cart</position>
+                <position>above_content,below_content</position>
+                <show_on>product_page</show_on>
+                <show_under_cart>1</show_under_cart>
                 <radius>0</radius>
                 <show_counts>1</show_counts>
             </general>

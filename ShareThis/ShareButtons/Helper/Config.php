@@ -43,6 +43,43 @@ class Config extends AbstractHelper {
 	}
 
 	/**
+	 * Get inline buttons selected pages as array.
+	 *
+	 * @return array
+	 */
+	public function getInlineButtonsSelectPages(): array {
+		$selectPages = $this->getConfigValue(
+			'sharethis_inline_sharebuttons/general/show_on',
+			''
+		);
+
+		return explode( ',', $selectPages );
+	}
+
+	/**
+	 * Get inline buttons selected positions as array.
+	 *
+	 * @return array
+	 */
+	public function getInlineButtonsSelectPositions(): array {
+		$selectPages = $this->getConfigValue(
+			'sharethis_inline_sharebuttons/general/position',
+			''
+		);
+
+		return explode( ',', $selectPages );
+	}
+
+	/**
+	 * Fetch whether to show inline buttons under cart on PDP.
+	 *
+	 * @return bool
+	 */
+	public function getInlineButtonsShowUnderCart(): bool {
+		return '1' === $this->getConfigValue('sharethis_inline_sharebuttons/general/show_under_cart', '1');
+	}
+
+	/**
 	 * Get inline buttons alignment.
 	 *
 	 * @return string
@@ -170,7 +207,7 @@ class Config extends AbstractHelper {
 	public function getStickyButtonsSelectPages(): array {
 		$selectPages = $this->getConfigValue(
 			'sharethis_sticky_sharebuttons/general/show_on_page',
-			'category_page,contact_us,product_page'
+			''
 		);
 
 		return explode( ',', $selectPages );
@@ -184,7 +221,7 @@ class Config extends AbstractHelper {
 	public function getStickyButtonsCmsPages(): array {
 		$cmsPages = $this->getConfigValue(
 			'sharethis_sticky_sharebuttons/general/show_on_cms_page',
-			'2'
+			''
 		);
 
 		return array_map( 'intval', explode( ',', $cmsPages ) );

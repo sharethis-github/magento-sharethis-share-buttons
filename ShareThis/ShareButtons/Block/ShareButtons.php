@@ -44,13 +44,16 @@ class ShareButtons extends Template {
 		$position = $this->getData( 'position' );
 		$type     = $this->getData( 'type' );
 
-		$pagesAllowed = [];
-
 		switch ( $type ) {
 			case 'inline':
-				$pagesAllowed[] = 'under_cart'; // TODO: Grab this dynamically.
+				if ( 'under_cart' === $position && true === $this->configHelper->getInlineButtonsShowUnderCart() ) {
+					return true;
+				}
 
-				return true === in_array( $page, $pagesAllowed, true );
+				$pagesAllowed = $this->configHelper->getInlineButtonsSelectPages();
+
+				return true === in_array( $page, $pagesAllowed, true ) &&
+					   true === in_array( $position, $this->configHelper->getInlineButtonsSelectPositions(), true );
 			case 'sticky':
 				$stickyButtonsShowOn = $this->configHelper->getStickyButtonsShowOn();
 

@@ -9,7 +9,9 @@ namespace ShareThis\ShareButtons\Model\System\Config\Source;
  */
 class InlinePosition extends OptionsArray {
 
-	const UNDER_CART = 'under_cart';
+	const ABOVE_CONTENT = 'above_content';
+
+	const BELOW_CONTENT = 'below_content';
 
 	/**
 	 * Get option map of inline item positions.
@@ -18,7 +20,8 @@ class InlinePosition extends OptionsArray {
 	 */
 	public function getOptionMap(): array {
 		return [
-			self::UNDER_CART => __( 'Product Page - Under Cart' ),
+			self::ABOVE_CONTENT => __( 'Above Content' ),
+			self::BELOW_CONTENT => __( 'Below Content' ),
 		];
 	}
 }
