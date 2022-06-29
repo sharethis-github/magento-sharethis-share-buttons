@@ -6,6 +6,7 @@ use Magento\Cms\Block\Page;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use ShareThis\ShareButtons\Helper\Config as ConfigHelper;
+use ShareThis\ShareButtons\Model\System\Config\Source\StickyShowOn;
 
 class ShareButtons extends Template {
 	/**
@@ -51,8 +52,24 @@ class ShareButtons extends Template {
 
 				return true === in_array( $page, $pagesAllowed, true );
 			case 'sticky':
-				// TODO: Implement allowed areas.
-				return false;
+				$stickyButtonsShowOn = $this->configHelper->getStickyButtonsShowOn();
+
+				if ( StickyShowOn::ALL_PAGES === $stickyButtonsShowOn ) {
+					return true;
+				} elseif ( StickyShowOn::SELECT_PAGES === $stickyButtonsShowOn ) {
+					$selectPages = $this->configHelper->getStickyButtonsSelectPages();
+					$cmsPages    = $this->configHelper->getStickyButtonsCmsPages();
+
+					if ( 'cms_page' === $page ) {
+						$pageId = intval($this->page->getPage()->getId());
+
+						if ( true === in_array( $pageId, $cmsPages, true ) ) {
+							return true;
+						}
+					} elseif ( true === in_array( $page, $selectPages, true ) ) {
+						return true;
+					}
+				}
 		}
 
 		return false;

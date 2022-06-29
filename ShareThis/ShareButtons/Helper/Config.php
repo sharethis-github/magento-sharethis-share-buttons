@@ -163,6 +163,43 @@ class Config extends AbstractHelper {
 	}
 
 	/**
+	 * Get sticky buttons selected pages as array.
+	 *
+	 * @return array
+	 */
+	public function getStickyButtonsSelectPages(): array {
+		$selectPages = $this->getConfigValue(
+			'sharethis_sticky_sharebuttons/general/show_on_page',
+			'category_page,contact_us,product_page'
+		);
+
+		return explode( ',', $selectPages );
+	}
+
+	/**
+	 * Get sticky buttons cms pages as array.
+	 *
+	 * @return array
+	 */
+	public function getStickyButtonsCmsPages(): array {
+		$cmsPages = $this->getConfigValue(
+			'sharethis_sticky_sharebuttons/general/show_on_cms_page',
+			'2'
+		);
+
+		return array_map( 'intval', explode( ',', $cmsPages ) );
+	}
+
+	/**
+	 * Get sticky buttons 'show on' string.
+	 *
+	 * @return string
+	 */
+	public function getStickyButtonsShowOn(): string {
+		return $this->getConfigValue('sharethis_sticky_sharebuttons/general/show_on', 'all_pages');
+	}
+
+	/**
 	 * Get sticky buttons - min count to show counts.
 	 *
 	 * @return integer
