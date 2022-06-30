@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="ShareThis\ShareButtons\Block\ShareButtons" name="st.ShareButtons.InlineTop" template="ShareThis_ShareButtons::sharethis-inline-share-buttons.phtml" before="-">
+                <arguments>
+                    <argument name="page" xsi:type="string">home_page</argument>
+                    <argument name="position" xsi:type="string">above_content</argument>
+                    <argument name="type" xsi:type="string">inline</argument>
+                </arguments>
+            </block>
+            <block class="ShareThis\ShareButtons\Block\ShareButtons" name="st.ShareButtons.InlineBottom" template="ShareThis_ShareButtons::sharethis-inline-share-buttons.phtml" after="-">
+                <arguments>
+                    <argument name="page" xsi:type="string">home_page</argument>
+                    <argument name="position" xsi:type="string">below_content</argument>
+                    <argument name="type" xsi:type="string">inline</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

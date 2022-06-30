@@ -3,8 +3,8 @@
 set -eo allexport
 . ./env
 
-docker exec -it \
-  -u www-data:www-data \
-  st_magento \
-  composer \
-  "${@:---help}"
+docker run --rm -v \
+  $(PWD):/app \
+  prooph/composer:7.4 \
+  --working-dir="${WORKING_DIR:-.}" \
+  "${@:-help}"
