@@ -1,4 +1,10 @@
 <?php
+/**
+ * @author    ShareThis
+ * @copyright Copyright (c) 2022 ShareThis (https://sharethis.com)
+ * @license   https://www.gnu.org/licenses/gpl-3.0.html
+ * @package   ShareThis_ShareButtons
+ */
 
 namespace ShareThis\ShareButtons\Block;
 
