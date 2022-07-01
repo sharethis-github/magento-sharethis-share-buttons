@@ -45,18 +45,21 @@ class ShareThis {
 	/**
 	 * Create property.
 	 *
+	 * @param string $domain            Store domain string.
+	 * @param string $onboardingProduct Onboarding product (default = 'inline-share-buttons').
+	 *
 	 * @return array
 	 *
 	 * @throws \Exception
 	 */
-	public function createProperty( string $domain ) {
+	public function createProperty( string $domain, string $onboardingProduct = 'inline-share-buttons' ) {
 		$host = parse_url( $domain, PHP_URL_HOST );
 
 		$response = $this->doPost(
 			self::API_PROPERTIES_ENDPOINT,
 			[
 				'domain'     => $host,
-				'product'    => 'inline-share-buttons', // TODO: Update the product from the config page.
+				'product'    => $onboardingProduct,
 				'is_magento' => true,
 			]
 		);

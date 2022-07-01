@@ -53,10 +53,35 @@ class ConfigPlugin {
 			return;
 		}
 
+		$section = $config->getSection();
+
+		if ( false === in_array(
+				$section,
+				[
+					'sharethis_inline_sharebuttons',
+					'sharethis_sticky_sharebuttons',
+				],
+				true
+			)
+		) {
+			return;
+		}
+
+		$productMap = [
+			'sharethis_inline_sharebuttons' => 'inline-share-buttons',
+			'sharethis_sticky_sharebuttons' => 'sticky-share-buttons',
+		];
+
+		$onboardingProduct = null;
+
+		if ( true === isset( $productMap[ $section ] ) ) {
+			$onboardingProduct = $productMap[ $section ];
+		}
+
 		$baseUrl = $this->storeManager->getStore()->getBaseUrl();
 
 		try {
-			$property = $this->shareThisService->createProperty( $baseUrl );
+			$property = $this->shareThisService->createProperty( $baseUrl, $onboardingProduct );
 
 			$this->configHelper->saveConfigValue('sharethis_sharebuttons/general/property_id', $property['_id']);
 			$this->configHelper->saveConfigValue('sharethis_sharebuttons/general/secret', $property['secret']);
