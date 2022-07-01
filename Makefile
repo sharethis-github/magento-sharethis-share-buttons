@@ -54,3 +54,6 @@ start:	## Start Magento.
 stop:	## Stop Magento.
 	@docker compose down
 
+.PHONY: tail
+tail:	## Tail Magento.
+	@docker compose logs -t -f web
