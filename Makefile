@@ -57,3 +57,7 @@ stop:	## Stop Magento.
 .PHONY: tail
 tail:	## Tail Magento.
 	@docker compose logs -t -f web
+
+.PHONY: zip
+zip:	## Zip for release.
+	@zip -r magento-sharethis-share-buttons . -x@.distignore
