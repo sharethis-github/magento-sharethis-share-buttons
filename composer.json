@@ -1,6 +1,6 @@
 {
   "name": "sharethis/magento-sharethis-sharebuttons",
-  "description": "ShareThis Share Buttons",
+  "description": "ShareThis Share Buttons for Magento",
   "require": {
     "php": "~7.4.0||~8.1.0"
   },
