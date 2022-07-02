@@ -1,15 +1,18 @@
 {
-  "name": "sharethis/share-buttons",
-  "description": "Share Buttons from ShareThis.",
+  "name": "sharethis/magento-sharethis-sharebuttons",
+  "description": "ShareThis Share Buttons for Magento",
+  "require": {
+    "php": "~7.4.0||~8.1.0"
+  },
   "type": "magento2-module",
   "version": "1.0.0",
-  "license": "ISC",
+  "license": "proprietary",
   "authors": [
     {
-      "name": "Scott Weaver",
-      "email": "sweaver@sharethis.com",
+      "name": "ShareThis",
+      "email": "support@sharethis.com",
       "homepage": "https://sharethis.com",
-      "role": "Developer"
+      "role": "Technical Support"
     }
   ],
   "autoload": {
@@ -17,7 +20,7 @@
       "registration.php"
     ],
     "psr-4": {
-      "ShareThis\\ShareButtons\\": "ShareThis/ShareButtons"
+      "ShareThis\\ShareButtons\\": "."
     }
   }
 }

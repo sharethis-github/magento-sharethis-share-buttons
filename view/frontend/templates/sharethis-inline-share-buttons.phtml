@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author    ShareThis
+ * @copyright Copyright (c) 2022 ShareThis (https://sharethis.com)
+ * @license   https://www.gnu.org/licenses/gpl-3.0.html
+ * @package   ShareThis_ShareButtons
+ *
+ * @var ShareButtons $block
+ */
+
+use ShareThis\ShareButtons\Block\ShareButtons;
+
+?>
+<?php if ( true === $block->isEnabled() ) : ?>
+	<div class="sharethis-inline-share-buttons"></div>
+
+	<style>
+	@media (max-width: 767px) {
+		.product-info-main .sharethis-inline-share-buttons {
+			margin-bottom: 20px;
+		}
+	}
+	</style>
+<?php endif; ?>

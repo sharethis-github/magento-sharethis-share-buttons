@@ -1,1 +1,5 @@
+# IDE Files
 .DS_Store
+.idea
+.vscode
+magento-sharethis-share-buttons.zip
