@@ -60,4 +60,4 @@ tail:	## Tail Magento.
 
 .PHONY: zip
 zip:	## Zip for release.
-	@zip -r magento-sharethis-share-buttons . -x@.distignore
+	@zip -r magento-sharethis-share-buttons.zip . -x@.distignore

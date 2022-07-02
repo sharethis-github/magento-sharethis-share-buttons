@@ -1,5 +1,5 @@
 {
-  "name": "sharethis/sharebuttons",
+  "name": "sharethis/magento-sharethis-sharebuttons",
   "description": "ShareThis Share Buttons",
   "require": {
     "php": "~7.4.0||~8.1.0"
@@ -18,7 +18,7 @@
   "autoload": {
     "files": [
       "registration.php"
-    ],`
+    ],
     "psr-4": {
       "ShareThis\\ShareButtons\\": "."
     }
