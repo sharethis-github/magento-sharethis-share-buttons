@@ -85,10 +85,6 @@
                     <label>Buffer</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
-                <field id="delicious" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Delicious</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
                 <field id="diaspora" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Diaspora</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
@@ -208,10 +204,6 @@
                 </field>
                 <field id="snapchat" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Snapchat</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="stumbleupon" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>StumbleUpon</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="telegram" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -358,10 +350,6 @@
                     <label>Buffer</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
-                <field id="delicious" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Delicious</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
                 <field id="diaspora" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Diaspora</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
@@ -481,10 +469,6 @@
                 </field>
                 <field id="snapchat" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Snapchat</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="stumbleupon" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>StumbleUpon</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="telegram" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
