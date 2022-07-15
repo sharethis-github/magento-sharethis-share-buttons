@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInit12d4cdaa4ec46a4ecee140b3d0b27b36
 {
     public static $files = array (
-        'fedc00aa77a4fbdf15cc8604a047a417' => __DIR__ . '/../..' . '/registration.php',
+        '39336095afe0f620b531c709950ddbe8' => __DIR__ . '/../..' . '/registration.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -20,7 +20,7 @@ class ComposerStaticInit12d4cdaa4ec46a4ecee140b3d0b27b36
     public static $prefixDirsPsr4 = array (
         'ShareThis\\ShareButtons\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/ShareThis/ShareButtons',
+            0 => __DIR__ . '/../..' . '/',
         ),
     );
 

@@ -10,197 +10,214 @@ namespace ShareThis\ShareButtons\Plugin;
 
 use Magento\Config\Model\Config;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Message\ManagerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use ShareThis\ShareButtons\Helper\Config as ConfigHelper;
 use ShareThis\ShareButtons\Service\ShareThis as ShareThisService;
 
-/**
- * Config plugin.
- */
-class ConfigPlugin {
-	/**
-	 * @var ConfigHelper
-	 */
-	protected $configHelper;
+class ConfigPlugin
+{
+    /**
+     * @var ConfigHelper
+     */
+    protected $_configHelper;
 
-	/**
-	 * @var RequestInterface
-	 */
-	protected $request;
+    /**
+     * @var RequestInterface
+     */
+    protected $_request;
 
-	/**
-	 * @var ShareThisService
-	 */
-	protected $shareThisService;
+    /**
+     * @var ShareThisService
+     */
+    protected $_shareThisService;
 
-	public function __construct(
-		RequestInterface $request,
-		ConfigHelper $configHelper,
-		ShareThisService $shareThisService,
-		StoreManagerInterface $storeManager
-	) {
-		$this->request = $request;
-		$this->configHelper = $configHelper;
-		$this->shareThisService = $shareThisService;
-		$this->storeManager = $storeManager;
-	}
+    /**
+     * @var StoreManagerInterface
+     */
+    protected $_storeManager;
 
-	/**
-	 * Before config save callback.
-	 *
-	 * @param Config $config
-	 *
-	 * @throws \Magento\Framework\Exception\NoSuchEntityException
-	 */
-	public function beforeSave( Config $config ) {
-		$propertyId = $this->configHelper->getPropertyId();
+    /**
+     * @param RequestInterface      $request
+     * @param ConfigHelper          $configHelper
+     * @param ShareThisService      $shareThisService
+     * @param StoreManagerInterface $storeManager
+     * @param ManagerInterface      $messageManager
+     */
+    public function __construct(
+        RequestInterface $request,
+        ConfigHelper $configHelper,
+        ShareThisService $shareThisService,
+        StoreManagerInterface $storeManager,
+        ManagerInterface $messageManager
+    ) {
+        $this->_request      = $request;
+        $this->_configHelper = $configHelper;
+        $this->_shareThisService = $shareThisService;
+        $this->_storeManager = $storeManager;
+        $this->_messageManager = $messageManager;
+    }
 
-		if ( false === empty( $propertyId ) ) {
-			return;
-		}
+    /**
+     * Before config save callback.
+     *
+     * @param Config $config
+     *
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function beforeSave(Config $config)
+    {
+        $propertyId = $this->_configHelper->getPropertyId();
 
-		$section = $config->getSection();
+        if (false === empty($propertyId)) {
+            return;
+        }
 
-		if ( false === in_array(
-				$section,
-				[
-					'sharethis_inline_sharebuttons',
-					'sharethis_sticky_sharebuttons',
-				],
-				true
-			)
-		) {
-			return;
-		}
+        $section = $config->getSection();
 
-		$productMap = [
-			'sharethis_inline_sharebuttons' => 'inline-share-buttons',
-			'sharethis_sticky_sharebuttons' => 'sticky-share-buttons',
-		];
+        if (false === in_array(
+            $section,
+            [
+                    'sharethis_inline_sharebuttons',
+                    'sharethis_sticky_sharebuttons',
+                ],
+            true
+        )
+        ) {
+            return;
+        }
 
-		$onboardingProduct = null;
+        $productMap = [
+            'sharethis_inline_sharebuttons' => 'inline-share-buttons',
+            'sharethis_sticky_sharebuttons' => 'sticky-share-buttons',
+        ];
 
-		if ( true === isset( $productMap[ $section ] ) ) {
-			$onboardingProduct = $productMap[ $section ];
-		}
+        $onboardingProduct = null;
 
-		$baseUrl = $this->storeManager->getStore()->getBaseUrl();
+        if (true === isset($productMap[ $section ])) {
+            $onboardingProduct = $productMap[ $section ];
+        }
 
-		try {
-			$property = $this->shareThisService->createProperty( $baseUrl, $onboardingProduct );
+        $baseUrl = $this->_storeManager->getStore()->getBaseUrl();
 
-			$this->configHelper->saveConfigValue('sharethis_sharebuttons/general/property_id', $property['_id']);
-			$this->configHelper->saveConfigValue('sharethis_sharebuttons/general/secret', $property['secret']);
-		} catch ( \Exception $e ) {
-			// Do nothing. Yet.
-		}
-	}
+        try {
+            $property = $this->_shareThisService->createProperty($baseUrl, $onboardingProduct);
 
-	/**
-	 * Config save callback.
-	 *
-	 * @param Config $config Configuration interceptor object.
-	 *
-	 * @throws \Exception
-	 */
-	public function afterSave(Config $config) {
-		$section = $config->getSection();
+            $this->_configHelper->saveConfigValue('sharethis_sharebuttons/general/property_id', $property['_id']);
+            $this->_configHelper->saveConfigValue('sharethis_sharebuttons/general/secret', $property['secret']);
+        } catch (\Exception $e) {
+            $this->_messageManager->addErrorMessage($e->getTraceAsString());
+        }
+    }
 
-		if ( false === in_array(
-				$section,
-				[
-					'sharethis_inline_sharebuttons',
-					'sharethis_sticky_sharebuttons',
-				],
-				true
-			)
-		) {
-			return;
-		}
+    /**
+     * Config save callback.
+     *
+     * @param Config $config Configuration interceptor object.
+     *
+     * @throws \Exception
+     */
+    public function afterSave(Config $config)
+    {
+        $section = $config->getSection();
 
-		$propertyId = $this->configHelper->getPropertyId();
-		$secret = $this->configHelper->getSecret();
+        if (false === in_array(
+            $section,
+            [
+                    'sharethis_inline_sharebuttons',
+                    'sharethis_sticky_sharebuttons',
+                ],
+            true
+        )
+        ) {
+            return;
+        }
 
-		if ( true === empty( $propertyId ) ) {
-			return;
-		}
+        $propertyId = $this->_configHelper->getPropertyId();
+        $secret = $this->_configHelper->getSecret();
 
-		switch($section) {
-			case 'sharethis_inline_sharebuttons':
-				$this->saveInlineButtonConfig($propertyId, $secret);
-				break;
-			case 'sharethis_sticky_sharebuttons':
-				$this->saveStickyButtonConfig($propertyId, $secret);
-				break;
-		}
-	}
+        if (true === empty($propertyId)) {
+            return;
+        }
 
-	/**
-	 * Save inline button config to ShareThis.
-	 *
-	 * @param string $propertyId Property ID string.
-	 * @param string $secret     Secret string.
-	 *
-	 * @throws \Exception
-	 */
-	protected function saveInlineButtonConfig($propertyId, $secret) {
-		$inlineSocialNetworks = $this->configHelper->getSocialNetworks('inline');
+        switch ($section) {
+            case 'sharethis_inline_sharebuttons':
+                $this->saveInlineButtonConfig($propertyId, $secret);
+                break;
+            case 'sharethis_sticky_sharebuttons':
+                $this->saveStickyButtonConfig($propertyId, $secret);
+                break;
+        }
+    }
 
-		$inlineSocialNetworksCount = count($inlineSocialNetworks);
+    /**
+     * Save inline button config to ShareThis.
+     *
+     * @param string $propertyId Property ID string.
+     * @param string $secret     Secret string.
+     *
+     * @throws \Exception
+     */
+    protected function saveInlineButtonConfig($propertyId, $secret)
+    {
+        $inlineSocialNetworks = $this->_configHelper->getSocialNetworks('inline');
 
-		$this->shareThisService->updateProduct(
-			$propertyId,
-			$secret,
-			'inline-share-buttons',
-			[
-				'alignment'         => $this->configHelper->getInlineButtonsAlignment(),
-				'enabled'           => $this->configHelper->getInlineButtonsEnabled(),
-				'font_size'         => 11,
-				'labels'            => $this->configHelper->getInlineButtonsLabelType(),
-				'min_count'         => $this->configHelper->getInlineButtonsMinimumCount(),
-				'padding'           => 8,
-				'radius'            => $this->configHelper->getInlineButtonsRadius(),
-				'networks'          => $inlineSocialNetworks,
-				'show_total'        => $this->configHelper->getInlineButtonsShowCounts(),
-				'size'              => 32,
-				'spacing'           => 8,
-				'language'          => $this->configHelper->getInlineButtonsLanguage(),
-				'color'             => 'social',
-				'has_spacing'       => $this->configHelper->getInlineButtonsHasSpacing(),
-				'num_networks'      => $inlineSocialNetworksCount,
-				'size_label'        => $this->configHelper->getInlineButtonsLabelSize(),
-				'use_native_counts' => true,
-			]
-		);
-	}
+        $inlineSocialNetworksCount = count($inlineSocialNetworks);
 
-	/**
-	 * Save sticky button config to ShareThis.
-	 *
-	 * @param string $propertyId Property ID string.
-	 * @param string $secret     Secret string.
-	 *
-	 * @throws \Exception
-	 */
-	protected function saveStickyButtonConfig( $propertyId, $secret ) {
-		$this->shareThisService->updateProduct(
-			$propertyId,
-			$secret,
-			'sticky-share-buttons',
-			[
-				'alignment'         => $this->configHelper->getStickyButtonsAlignment(),
-				'enabled'           => $this->configHelper->getStickyButtonsEnabled(),
-				'labels'            => $this->configHelper->getStickyButtonsLabelType(),
-				'min_count'         => $this->configHelper->getStickyButtonsMinimumCount(),
-				'radius'            => $this->configHelper->getStickyButtonsRadius(),
-				'networks'          => $this->configHelper->getSocialNetworks( 'sticky' ),
-				'mobile_breakpoint' => $this->configHelper->getStickyButtonsMobileBreakpoint(),
-				'top'               => $this->configHelper->getStickyButtonsVerticalAlignment(),
-				'show_mobile'       => $this->configHelper->getStickyButtonsShowMobile(),
-				'show_total'        => $this->configHelper->getStickyButtonsShowCounts(),
-				'hide_desktop'      => $this->configHelper->getStickyButtonsHideDesktop(),
-				'language'          => $this->configHelper->getStickyButtonsLanguage(),
-			]
-		);
-	}
+        $this->_shareThisService->updateProduct(
+            $propertyId,
+            $secret,
+            'inline-share-buttons',
+            [
+                'alignment'         => $this->_configHelper->getInlineButtonsAlignment(),
+                'enabled'           => $this->_configHelper->getInlineButtonsEnabled(),
+                'font_size'         => 11,
+                'labels'            => $this->_configHelper->getInlineButtonsLabelType(),
+                'min_count'         => $this->_configHelper->getInlineButtonsMinimumCount(),
+                'padding'           => 8,
+                'radius'            => $this->_configHelper->getInlineButtonsRadius(),
+                'networks'          => $inlineSocialNetworks,
+                'show_total'        => $this->_configHelper->getInlineButtonsShowCounts(),
+                'size'              => 32,
+                'spacing'           => 8,
+                'language'          => $this->_configHelper->getInlineButtonsLanguage(),
+                'color'             => 'social',
+                'has_spacing'       => $this->_configHelper->getInlineButtonsHasSpacing(),
+                'num_networks'      => $inlineSocialNetworksCount,
+                'size_label'        => $this->_configHelper->getInlineButtonsLabelSize(),
+                'use_native_counts' => true,
+            ]
+        );
+    }
+
+    /**
+     * Save sticky button config to ShareThis.
+     *
+     * @param string $propertyId Property ID string.
+     * @param string $secret     Secret string.
+     *
+     * @throws \Exception
+     */
+    protected function saveStickyButtonConfig($propertyId, $secret)
+    {
+        $this->_shareThisService->updateProduct(
+            $propertyId,
+            $secret,
+            'sticky-share-buttons',
+            [
+                'alignment'         => $this->_configHelper->getStickyButtonsAlignment(),
+                'enabled'           => $this->_configHelper->getStickyButtonsEnabled(),
+                'labels'            => $this->_configHelper->getStickyButtonsLabelType(),
+                'min_count'         => $this->_configHelper->getStickyButtonsMinimumCount(),
+                'radius'            => $this->_configHelper->getStickyButtonsRadius(),
+                'networks'          => $this->_configHelper->getSocialNetworks('sticky'),
+                'mobile_breakpoint' => $this->_configHelper->getStickyButtonsMobileBreakpoint(),
+                'top'               => $this->_configHelper->getStickyButtonsVerticalAlignment(),
+                'show_mobile'       => $this->_configHelper->getStickyButtonsShowMobile(),
+                'show_total'        => $this->_configHelper->getStickyButtonsShowCounts(),
+                'hide_desktop'      => $this->_configHelper->getStickyButtonsHideDesktop(),
+                'language'          => $this->_configHelper->getStickyButtonsLanguage(),
+            ]
+        );
+    }
 }
