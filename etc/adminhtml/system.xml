@@ -52,7 +52,7 @@
                 </field>
                 <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Minimum Count</label>
-                    <validate>integer validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                     <comment>This is the minimum number of shares a page needs to have before we'll show your share
                         counts.
                     </comment>
@@ -296,7 +296,7 @@
                 </field>
                 <field id="mobile_breakpoint" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Mobile Breakpoint</label>
-                    <validate>validate-number validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                 </field>
                 <field id="label_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Label Type</label>
@@ -309,7 +309,7 @@
                 </field>
                 <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Minimum Count</label>
-                    <validate>integer validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                     <comment>This is the minimum number of shares a page needs to have before we'll show your share
                         counts.
                     </comment>
