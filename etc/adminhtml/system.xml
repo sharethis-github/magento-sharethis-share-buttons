@@ -280,19 +280,23 @@
                     <label>Show On</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyShowOn</source_model>
                 </field>
-                <field id="show_on_page" translate="label" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="show_on_page" translate="label comment" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Select Pages</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickySelectPages</source_model>
                     <depends>
                         <field id="show_on">select_pages</field>
                     </depends>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
-                <field id="show_on_cms_page" translate="label" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="show_on_cms_page" translate="label comment" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Select CMS Page</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyCmsPages</source_model>
                     <depends>
                         <field id="show_on">select_pages</field>
                     </depends>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
                 <field id="vertical_alignment" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Vertical Alignment</label>
