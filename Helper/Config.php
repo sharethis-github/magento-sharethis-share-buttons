@@ -52,6 +52,26 @@ class Config extends AbstractHelper
     }
 
     /**
+     * Get inline buttons font size.
+     *
+     * @return int
+     */
+    public function getInlineButtonsFontSize(): int
+    {
+        $size = $this->getInlineButtonsLabelSize();
+
+        switch ($size) {
+            case 'large':
+                return 16;
+            case 'medium':
+                return 12;
+            default:
+            case 'small':
+                return 11;
+        }
+    }
+
+    /**
      * Get inline buttons selected pages as array.
      *
      * @return array
@@ -112,6 +132,16 @@ class Config extends AbstractHelper
     }
 
     /**
+     * Get inline buttons color.
+     *
+     * @return string
+     */
+    public function getInlineButtonsColor(): string
+    {
+        return 'social';
+    }
+
+    /**
      * Get inline buttons label size.
      *
      * @return string
@@ -142,6 +172,38 @@ class Config extends AbstractHelper
     }
 
     /**
+     * Get inline buttons size.
+     *
+     * @return int
+     */
+    public function getInlineButtonsSize(): int
+    {
+        $size = $this->getInlineButtonsLabelSize();
+
+        switch ($size) {
+            case 'large':
+                return 48;
+            case 'medium':
+                return 40;
+            default:
+            case 'small':
+                return 32;
+        }
+    }
+
+    /**
+     * Get inline buttons spacing.
+     *
+     * @return int
+     */
+    public function getInlineButtonsSpacing(): int
+    {
+        $size = $this->getInlineButtonsHasSpacing();
+
+        return true === $size ? 8 : 0;
+    }
+
+    /**
      * Get inline buttons - min count to show counts.
      *
      * @return integer
@@ -149,6 +211,26 @@ class Config extends AbstractHelper
     public function getInlineButtonsMinimumCount(): int
     {
         return (int)$this->getConfigValue('sharethis_inline_sharebuttons/general/min_count', 1);
+    }
+
+    /**
+     * Get inline buttons padding.
+     *
+     * @return int
+     */
+    public function getInlineButtonsPadding(): int
+    {
+        $size = $this->getInlineButtonsLabelSize();
+
+        switch ($size) {
+            case 'large':
+                return 12;
+            case 'medium':
+                return 10;
+            default:
+            case 'small':
+                return 8;
+        }
     }
 
     /**
