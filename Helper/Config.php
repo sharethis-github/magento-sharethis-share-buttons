@@ -319,7 +319,7 @@ class Config extends AbstractHelper
             ''
         );
 
-        return explode(',', $selectPages);
+        return array_filter(explode(',', $selectPages));
     }
 
     /**
@@ -334,7 +334,7 @@ class Config extends AbstractHelper
             ''
         );
 
-        return array_map('intval', explode(',', $cmsPages));
+        return array_filter(array_map('intval', explode(',', $cmsPages)));
     }
 
     /**
