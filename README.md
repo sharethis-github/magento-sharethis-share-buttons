@@ -1,10 +1,14 @@
 # ShareThis Share Buttons Magento Extension
 
-ShareThis - the original embeddable share buttons. We've rebuilt our buttons from the ground up, and they're better than ever. Try them today!
+ShareThis Share Buttons is a tool that allows you to expand the reach of your content organically and grow your audience. Make it easy for your audience to share your content across the most popular social channels. 
 
-Our share buttons feature all the most popular social networks, including mobile choices like SMS and WhatsApp. Our buttons are mobile optimized, enabling visitors to share your content from any device. Our code is lightweight and won’t bog down your site. Did we mention they're beautiful too? Get crisp logos at any size, plus bold, eye catching colors and labels. Customize a set today to make them your own.
+**Features**
 
-The ShareThis Share Buttons plugin allows Magento websites to quickly configure and install ShareThis share buttons. All the functionality found in the manual installation can be accomplished using this plugin, and more! Take complete control over where and how your share buttons appear on your Magento site.
+- Choose from 40+ social channels: Facebook, Twitter, Email, LinkedIn, WhatsApp, Pinterest, Snapchat, Reddit, Tumblr, Digg, Flipboard, Meneame, Facebook Messenger, Odnoklassniki, Sina Weibo, Vk, Blogger, Xing, Mail Ru, Livejournal, Buffer, Douban, Evernote, Google Bookmarks, Gmail, HackerNews, Instapaper, Line, Pocket, QZone, Diaspora, Surfingbird, Refind, RenRen, Skype, Telegram, Threema, Yahoo Mail, WordPress, and Wechat
+- Configure your buttons to stay anchored on the sidebar as visitors scroll or inline near your headline or product on the page for ideal visibility
+- Customize the design including the alignment, size, and color to match your brand
+- Increase social shares with our responsive, lightweight, code which loads asynchronously and won’t slow down your site.
+- Select your preferred language from over 15 options: English, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Russian, Chinese, Dutch, Arabic, Bengali, Hindi, Turkish, and Vietnamese.
 
 ## Table of Contents
 
