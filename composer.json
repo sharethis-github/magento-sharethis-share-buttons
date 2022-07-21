@@ -1,9 +1,6 @@
 {
   "name": "sharethis/magento-sharethis-sharebuttons",
   "description": "ShareThis Share Buttons for Magento",
-  "require": {
-    "php": "~7.4.0||~8.1.0"
-  },
   "type": "magento2-module",
   "version": "1.0.0",
   "license": "proprietary",

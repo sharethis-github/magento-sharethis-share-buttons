@@ -15,6 +15,9 @@ docker exec -it st_magento bash -c "chmod -R 777 generated var"
 # Run base install from env variables.
 docker exec -it st_magento install-magento
 
+# Run composer install on our plugin.
+docker exec -it st_magento composer install -d /var/www/html/app/code/ShareThis/ShareButtons/
+
 ADMIN_URL="$MAGENTO_URL/$MAGENTO_BACKEND_FRONTNAME/"
 
 # Print credentials to screen.
