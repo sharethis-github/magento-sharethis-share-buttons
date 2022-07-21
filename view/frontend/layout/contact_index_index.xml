@@ -1,0 +1,13 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="ShareThis\ShareButtons\Block\ShareButtons" name="st.ShareButtons.Sticky" template="ShareThis_ShareButtons::sharethis-sticky-share-buttons.phtml">
+                <arguments>
+                    <argument name="page" xsi:type="string">contact_us</argument>
+                    <argument name="position" xsi:type="string">sticky_position</argument>
+                    <argument name="type" xsi:type="string">sticky</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

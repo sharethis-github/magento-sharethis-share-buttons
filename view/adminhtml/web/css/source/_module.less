@@ -1,263 +1,263 @@
 @import '_variables';
 
-.social_button(@network) {
-	background-color: ~'@{color-@{network}}';
-	background-image: url(~'@{image-@{network}}');
-	background-position: 4px;
-	background-repeat: no-repeat;
-	background-size: 16px 16px;
-	border-radius: 3px;
-	content: '';
-	display: inline-block;
-	height: 24px;
-	float: left;
-	margin-right: 10px;
-	transform: translate(85px, 5px);
-	width: 24px;
+.social-button(@network) {
+    background-color: ~'@{color-@{network}}';
+    background-image: url(~'@{image-@{network}}');
+    background-position: 4px;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    border-radius: 3px;
+    content: '';
+    display: inline-block;
+    height: 24px;
+    float: left;
+    margin-right: 10px;
+    transform: translate(85px, 5px);
+    width: 24px;
 }
 
 .background-image-svg( @code ) {
-	@-svg-code: escape(~'<?xml version="1.0" ?>@{code}');
-	@-inline-svg-code: ~'data:image/svg+xml,@{-svg-code}';
-	@-inline-svg-url: ~"url('@{-inline-svg-code}')";
+    @-svg-code: escape(~'<?xml version="1.0" ?>@{code}');
+    @-inline-svg-code: ~'data:image/svg+xml,@{-svg-code}';
+    @-inline-svg-url: ~"url('@{-inline-svg-code}')";
 
-	background-image: @-inline-svg-url;
+    background-image: @-inline-svg-url;
 }
 
 .sharethis-extensions .title:before {
-	.social_button('sharethis');
-	float: none;
-	transform: translate(0, 5px);
+    .social-button('sharethis');
+    float: none;
+    transform: translate(0, 5px);
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_blm .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_blm .label label:before {
-	.social_button('blm');
+    .social-button('blm');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_blogger .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_blogger .label label:before {
-	.social_button('blogger');
+    .social-button('blogger');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_buffer .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_buffer .label label:before {
-	.social_button('buffer');
+    .social-button('buffer');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_delicious .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_delicious .label label:before {
-	.social_button('delicious');
+    .social-button('delicious');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_diaspora .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_diaspora .label label:before {
-	.social_button('diaspora');
+    .social-button('diaspora');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_digg .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_digg .label label:before {
-	.social_button('digg');
+    .social-button('digg');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_douban .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_douban .label label:before {
-	.social_button('douban');
+    .social-button('douban');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_email .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_email .label label:before {
-	.social_button('email');
+    .social-button('email');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_evernote .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_evernote .label label:before {
-	.social_button('evernote');
+    .social-button('evernote');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_flipboard .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_flipboard .label label:before {
-	.social_button('flipboard');
+    .social-button('flipboard');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_facebook .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_facebook .label label:before {
-	.social_button('facebook');
+    .social-button('facebook');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_gmail .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_gmail .label label:before {
-	.social_button('gmail');
+    .social-button('gmail');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_getpocket .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_getpocket .label label:before {
-	.social_button('getpocket');
+    .social-button('getpocket');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_googlebookmarks .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_googlebookmarks .label label:before {
-	.social_button('googlebookmarks');
+    .social-button('googlebookmarks');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_hackernews .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_hackernews .label label:before {
-	.social_button('hackernews');
+    .social-button('hackernews');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_instapaper .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_instapaper .label label:before {
-	.social_button('instapaper');
+    .social-button('instapaper');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_line .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_line .label label:before {
-	.social_button('line');
+    .social-button('line');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_linkedin .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_linkedin .label label:before {
-	.social_button('linkedin');
+    .social-button('linkedin');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_livejournal .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_livejournal .label label:before {
-	.social_button('livejournal');
+    .social-button('livejournal');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_mailru .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_mailru .label label:before {
-	.social_button('mailru');
+    .social-button('mailru');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_meneame .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_meneame .label label:before {
-	.social_button('meneame');
+    .social-button('meneame');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_messenger .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_messenger .label label:before {
-	.social_button('messenger');
+    .social-button('messenger');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_odnoklassniki .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_odnoklassniki .label label:before {
-	.social_button('odnoklassniki');
+    .social-button('odnoklassniki');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_pinterest .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_pinterest .label label:before {
-	.social_button('pinterest');
+    .social-button('pinterest');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_print .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_print .label label:before {
-	.social_button('print');
+    .social-button('print');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_qzone .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_qzone .label label:before {
-	.social_button('qzone');
+    .social-button('qzone');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_reddit .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_reddit .label label:before {
-	.social_button('reddit');
+    .social-button('reddit');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_refind .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_refind .label label:before {
-	.social_button('refind');
+    .social-button('refind');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_renren .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_renren .label label:before {
-	.social_button('renren');
+    .social-button('renren');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_sharethis .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_sharethis .label label:before {
-	.social_button('sharethis');
+    .social-button('sharethis');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_skype .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_skype .label label:before {
-	.social_button('skype');
+    .social-button('skype');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_sms .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_sms .label label:before {
-	.social_button('sms');
+    .social-button('sms');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_snapchat .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_snapchat .label label:before {
-	.social_button('snapchat');
+    .social-button('snapchat');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_stumbleupon .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_stumbleupon .label label:before {
-	.social_button('stumbleupon');
+    .social-button('stumbleupon');
 
-	.background-image-svg(~'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve"><g fill="#fff"><path d="M274.003 207.943a8.258 8.258 0 0 0 8.258 8.258h84.48a8.258 8.258 0 0 0 8.258-8.258v-32.048c0-65.67-53.382-119.093-118.997-119.093-65.622 0-119.007 53.425-119.007 119.093v157.356c0 9.925-8.071 17.999-17.991 17.999-9.926 0-17.999-8.076-17.999-17.999v-69.926a8.258 8.258 0 0 0-8.258-8.258H8.258A8.258 8.258 0 0 0 0 263.325v72.78c0 65.67 53.385 119.093 119.007 119.093 65.615 0 118.997-53.425 118.997-119.093v-160.21c0-9.918 8.075-17.988 17.999-17.988 9.926 0 17.999 8.07 17.999 17.988v32.048z"/><path d="M503.742 256.495h-84.483a8.258 8.258 0 0 0-8.258 8.258v71.351c0 9.925-8.075 17.999-17.999 17.999-9.926 0-17.999-8.076-17.999-17.999v-71.351a8.258 8.258 0 0 0-8.258-8.258h-84.483a8.258 8.258 0 0 0-8.258 8.258v71.351c0 65.67 53.382 119.093 118.997 119.093 65.617 0 119-53.425 119-119.093v-71.351a8.26 8.26 0 0 0-8.259-8.258z"/></g></svg>');
+    .background-image-svg(~'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xml:space="preserve"><g fill="#fff"><path d="M274.003 207.943a8.258 8.258 0 0 0 8.258 8.258h84.48a8.258 8.258 0 0 0 8.258-8.258v-32.048c0-65.67-53.382-119.093-118.997-119.093-65.622 0-119.007 53.425-119.007 119.093v157.356c0 9.925-8.071 17.999-17.991 17.999-9.926 0-17.999-8.076-17.999-17.999v-69.926a8.258 8.258 0 0 0-8.258-8.258H8.258A8.258 8.258 0 0 0 0 263.325v72.78c0 65.67 53.385 119.093 119.007 119.093 65.615 0 118.997-53.425 118.997-119.093v-160.21c0-9.918 8.075-17.988 17.999-17.988 9.926 0 17.999 8.07 17.999 17.988v32.048z"/><path d="M503.742 256.495h-84.483a8.258 8.258 0 0 0-8.258 8.258v71.351c0 9.925-8.075 17.999-17.999 17.999-9.926 0-17.999-8.076-17.999-17.999v-71.351a8.258 8.258 0 0 0-8.258-8.258h-84.483a8.258 8.258 0 0 0-8.258 8.258v71.351c0 65.67 53.382 119.093 118.997 119.093 65.617 0 119-53.425 119-119.093v-71.351a8.26 8.26 0 0 0-8.259-8.258z"/></g></svg>');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_surfingbird .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_surfingbird .label label:before {
-	.social_button('surfingbird');
+    .social-button('surfingbird');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_telegram .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_telegram .label label:before {
-	.social_button('telegram');
+    .social-button('telegram');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_threema .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_threema .label label:before {
-	.social_button('threema');
+    .social-button('threema');
 }
 
 #row_sharethis_inline_sharebuttons_social_networks_tumblr .label label:before,
 #row_sharethis_sticky_sharebuttons_social_networks_tumblr .label label:before {
-	.social_button('tumblr');
+    .social-button('tumblr');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_twitter .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_twitter .label label:before {
-	.social_button('twitter');
+    .social-button('twitter');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_vk .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_vk .label label:before {
-	.social_button('vk');
+    .social-button('vk');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_wechat .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_wechat .label label:before {
-	.social_button('wechat');
+    .social-button('wechat');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_weibo .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_weibo .label label:before {
-	.social_button('weibo');
+    .social-button('weibo');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_whatsapp .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_whatsapp .label label:before {
-	.social_button('whatsapp');
+    .social-button('whatsapp');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_wordpress .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_wordpress .label label:before {
-	.social_button('wordpress');
+    .social-button('wordpress');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_xing .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_xing .label label:before {
-	.social_button('xing');
+    .social-button('xing');
 }
 
 #row_sharethis_sticky_sharebuttons_social_networks_yahoomail .label label:before,
 #row_sharethis_inline_sharebuttons_social_networks_yahoomail .label label:before {
-	.social_button('yahoomail');
+    .social-button('yahoomail');
 }

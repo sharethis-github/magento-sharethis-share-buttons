@@ -15,27 +15,29 @@ use Magento\Framework\Option\ArrayInterface;
  *
  * @package ShareThis\ShareButtons
  */
-abstract class OptionsArray implements ArrayInterface {
+abstract class OptionsArray implements ArrayInterface
+{
 
-	/**
-	 * Return options array for use with Option Source interface.
-	 *
-	 * @return array
-	 */
-	public function toOptionArray(): array {
-		$options = [];
+    /**
+     * Return options array for use with Option Source interface.
+     *
+     * @return array
+     */
+    public function toOptionArray(): array
+    {
+        $options = [];
 
-		foreach ( $this->getOptionMap() as $value => $label ) {
-			$options[] = compact( 'value', 'label' );
-		}
+        foreach ($this->getOptionMap() as $value => $label) {
+            $options[] = compact('value', 'label');
+        }
 
-		return $options;
-	}
+        return $options;
+    }
 
-	/**
-	 * Get option map.
-	 *
-	 * @return array
-	 */
-	abstract public function getOptionMap(): array;
+    /**
+     * Get option map.
+     *
+     * @return array
+     */
+    abstract public function getOptionMap(): array;
 }

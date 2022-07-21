@@ -13,17 +13,21 @@
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
-                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="show_on" translate="label" type="multiselect" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="show_on" translate="label comment" type="multiselect" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Show On</label>
+                    <can_be_empty>1</can_be_empty>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlineShowOn</source_model>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
-                <field id="position" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="position" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Position</label>
+                    <can_be_empty>1</can_be_empty>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\InlinePosition</source_model>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
                 <field id="show_under_cart" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Show Under Cart on Product Detail Page</label>
@@ -52,7 +56,7 @@
                 </field>
                 <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Minimum Count</label>
-                    <validate>integer validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                     <comment>This is the minimum number of shares a page needs to have before we'll show your share
                         counts.
                     </comment>
@@ -83,10 +87,6 @@
                 </field>
                 <field id="buffer" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Buffer</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="delicious" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Delicious</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="diaspora" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -208,10 +208,6 @@
                 </field>
                 <field id="snapchat" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Snapchat</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="stumbleupon" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>StumbleUpon</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="telegram" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -284,19 +280,23 @@
                     <label>Show On</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyShowOn</source_model>
                 </field>
-                <field id="show_on_page" translate="label" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="show_on_page" translate="label comment" type="multiselect" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Select Pages</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickySelectPages</source_model>
                     <depends>
                         <field id="show_on">select_pages</field>
                     </depends>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
-                <field id="show_on_cms_page" translate="label" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="show_on_cms_page" translate="label comment" type="multiselect" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Select CMS Page</label>
                     <source_model>ShareThis\ShareButtons\Model\System\Config\Source\StickyCmsPages</source_model>
                     <depends>
                         <field id="show_on">select_pages</field>
                     </depends>
+                    <can_be_empty>1</can_be_empty>
+                    <comment>Hold CTRL (or CMD on Mac) while selecting items to select/deselect multiple items.</comment>
                 </field>
                 <field id="vertical_alignment" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Vertical Alignment</label>
@@ -304,7 +304,7 @@
                 </field>
                 <field id="mobile_breakpoint" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Mobile Breakpoint</label>
-                    <validate>validate-number validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                 </field>
                 <field id="label_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Label Type</label>
@@ -317,7 +317,7 @@
                 </field>
                 <field id="min_count" translate="label comment" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Minimum Count</label>
-                    <validate>integer validate-greater-than-zero</validate>
+                    <validate>integer not-negative-amount</validate>
                     <comment>This is the minimum number of shares a page needs to have before we'll show your share
                         counts.
                     </comment>
@@ -356,10 +356,6 @@
                 </field>
                 <field id="buffer" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Buffer</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="delicious" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Delicious</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="diaspora" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -481,10 +477,6 @@
                 </field>
                 <field id="snapchat" translate="label" type="select" sortOrder="340" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Snapchat</label>
-                    <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                </field>
-                <field id="stumbleupon" translate="label" type="select" sortOrder="350" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>StumbleUpon</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
                 </field>
                 <field id="telegram" translate="label" type="select" sortOrder="360" showInDefault="1" showInWebsite="1" showInStore="1">

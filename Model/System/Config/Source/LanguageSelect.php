@@ -8,50 +8,47 @@
 
 namespace ShareThis\ShareButtons\Model\System\Config\Source;
 
-/**
- * Class LanguageSelect.
- *
- * @package ShareThis\ShareButtons
- */
-class LanguageSelect extends OptionsArray {
+class LanguageSelect extends OptionsArray
+{
 
-	const CHINESE = 'zh';
+    public const CHINESE = 'zh';
 
-	const ENGLISH = 'en';
+    public const ENGLISH = 'en';
 
-	const FRENCH = 'fr';
+    public const FRENCH = 'fr';
 
-	const GERMAN = 'de';
+    public const GERMAN = 'de';
 
-	const ITALIAN = 'it';
+    public const ITALIAN = 'it';
 
-	const JAPANESE = 'ja';
+    public const JAPANESE = 'ja';
 
-	const KOREAN = 'ko';
+    public const KOREAN = 'ko';
 
-	const PORTUGUESE = 'pt';
+    public const PORTUGUESE = 'pt';
 
-	const RUSSIAN = 'ru';
+    public const RUSSIAN = 'ru';
 
-	const SPANISH = 'es';
+    public const SPANISH = 'es';
 
-	/**
-	 * Get option map of languages.
-	 *
-	 * @return array Option array map of languages in order.
-	 */
-	public function getOptionMap(): array {
-		return [
-			self::ENGLISH    => __( 'English' ),
-			self::GERMAN     => __( 'German' ),
-			self::SPANISH    => __( 'Spanish' ),
-			self::FRENCH     => __( 'French' ),
-			self::ITALIAN    => __( 'Italian' ),
-			self::JAPANESE   => __( 'Japanese' ),
-			self::KOREAN     => __( 'Korean' ),
-			self::PORTUGUESE => __( 'Portuguese' ),
-			self::RUSSIAN    => __( 'Russian' ),
-			self::CHINESE    => __( 'Chinese' ),
-		];
-	}
+    /**
+     * Get option map of languages.
+     *
+     * @return array Option array map of languages in order.
+     */
+    public function getOptionMap(): array
+    {
+        return [
+            self::ENGLISH    => __('English'),
+            self::GERMAN     => __('German'),
+            self::SPANISH    => __('Spanish'),
+            self::FRENCH     => __('French'),
+            self::ITALIAN    => __('Italian'),
+            self::JAPANESE   => __('Japanese'),
+            self::KOREAN     => __('Korean'),
+            self::PORTUGUESE => __('Portuguese'),
+            self::RUSSIAN    => __('Russian'),
+            self::CHINESE    => __('Chinese'),
+        ];
+    }
 }
