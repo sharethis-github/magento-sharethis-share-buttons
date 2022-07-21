@@ -13,13 +13,39 @@ ShareThis Share Buttons is a tool that allows you to expand the reach of your co
 ## Table of Contents
 
 1. [Installation](#Installation)
+   1. [Installation via Composer](#Installation-via-Composer)
+   2. [Installation via Github](#Installation-via-Github)
+2. [Contributing](#Contributing)
+3. [Support](https://github.com/sharethis-github/magento-sharethis-share-buttons/issues/)
 
 ## Installation
 
-First, clone the repo.
+### Installation via Composer
+
+Installation via Composer is recommended.
+
+```shell
+composer require sharethis/magento-sharethis-sharebuttons
+php bin/magento setup:upgrade
+php bin/magento setup:static-content:deploy
+```
+
+### Installation via Github
+
+Alternatively, you can install via cloning from Github.
 
 ```bash
-git clone git@github.com:weaver-sharethis/magento-sharethis-share-buttons.git
+mkdir -p app/code/ShareThis
+git clone git@github.com:sharethis-github/magento-sharethis-share-buttons.git app/code/ShareThis/ShareButtons
+composer install -d app/code/ShareThis/ShareButtons
+```
+
+## Contributing
+
+This repo comes with a built-in Docker-based development environment. First, clone the repo.
+
+```bash
+git clone git@github.com:sharethis-github/magento-sharethis-share-buttons.git
 cd magento-sharethis-share-buttons
 ```
 

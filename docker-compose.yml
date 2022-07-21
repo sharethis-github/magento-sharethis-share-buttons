@@ -16,7 +16,6 @@ services:
       - ./Model:/var/www/html/app/code/ShareThis/ShareButtons/Model
       - ./Plugin:/var/www/html/app/code/ShareThis/ShareButtons/Plugin
       - ./Service:/var/www/html/app/code/ShareThis/ShareButtons/Service
-      - ./vendor:/var/www/html/app/code/ShareThis/ShareButtons/vendor
       - ./view:/var/www/html/app/code/ShareThis/ShareButtons/view
       - ./composer.json:/var/www/html/app/code/ShareThis/ShareButtons/composer.json
       - ./composer.lock:/var/www/html/app/code/ShareThis/ShareButtons/composer.lock

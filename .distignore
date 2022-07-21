@@ -8,3 +8,4 @@ bin/*
 docker-compose.yml
 env
 Makefile
+vendor
