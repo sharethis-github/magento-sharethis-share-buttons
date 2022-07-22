@@ -45,13 +45,8 @@ class Head extends Template
         if (true === empty($propertyId)) {
             return;
         }
-
-		// @codingStandardsIgnoreStart
-        echo <<<SCRIPT
-
-<script src="//platform-api.sharethis.com/js/sharethis.js?ver=1.5.7#property=$propertyId"></script>
-
-SCRIPT;
-		// @codingStandardsIgnoreEnd
+        ?>
+        <script src="//platform-api.sharethis.com/js/sharethis.js?ver=1.5.7#property=<?= $propertyId; ?>"></script>
+        <?php
     }
 }
