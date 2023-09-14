@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2022 ShareThis (https://sharethis.com)
  * @license   https://www.gnu.org/licenses/gpl-3.0.html
  * @package   ShareThis_ShareButtons
- * @version   1.0.0
+ * @version   1.1.0
  */
 
 declare( strict_types=1 );

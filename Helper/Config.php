@@ -138,7 +138,7 @@ class Config extends AbstractHelper
      */
     public function getInlineButtonsColor(): string
     {
-        return 'social';
+	    return $this->getConfigValue('sharethis_inline_sharebuttons/general/color', 'social');
     }
 
     /**
