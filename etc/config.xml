@@ -7,6 +7,7 @@
         <sharethis_inline_sharebuttons>
             <general>
                 <alignment>center</alignment>
+                <color>social</color>
                 <enabled>0</enabled>
                 <has_spacing>1</has_spacing>
                 <label_size>small</label_size>
